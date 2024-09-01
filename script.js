@@ -20,7 +20,7 @@ document.getElementById('confirmar-presenca').addEventListener('click', function
         alert('Por favor, preencha todos os campos.');
     }
 });
-
+//pdf
 document.getElementById('gerar-pdf').addEventListener('click', function() {
     const { jsPDF } = window.jspdf;
 
