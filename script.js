@@ -66,6 +66,9 @@ document.getElementById('gerar-pdf').addEventListener('click', function() {
     doc.save('lista_presenca.pdf');
 });
 // Configuração do Firebase "Modificação"
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
 const firebaseConfig = {
     apiKey: "AIzaSyBQBss-1WbT3B3baV4DNuZBU1czHB4iO3A",
     authDomain: "database-a34d2.firebaseapp.com",
@@ -75,7 +78,8 @@ const firebaseConfig = {
     messagingSenderId: "422039753936",
     appId: "1:422039753936:web:e193a8f7e78f61b743bad5"
   };
-
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
   // Inicializa o Firebase
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
