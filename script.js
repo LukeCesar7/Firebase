@@ -65,6 +65,37 @@ document.getElementById('gerar-pdf').addEventListener('click', function() {
     // Salva o PDF
     doc.save('lista_presenca.pdf');
 });
+// Configuração do Firebase "Modificação"
+const firebaseConfig = {
+    apiKey: "AIzaSyBQBss-1WbT3B3baV4DNuZBU1czHB4iO3A",
+    authDomain: "database-a34d2.firebaseapp.com",
+    databaseURL: "https://database-a34d2-default-rtdb.firebaseio.com",
+    projectId: "database-a34d2",
+    storageBucket: "database-a34d2.appspot.com",
+    messagingSenderId: "422039753936",
+    appId: "1:422039753936:web:e193a8f7e78f61b743bad5"
+  };
+
+  // Inicializa o Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  // Referência para o array de presenças
+  const presencasRef = database.ref('presencas');
+
+  // Escuta atualizações do Firebase em tempo real
+  presencasRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    console.log('Presenças atualizadas:', data);
+    // Aqui você pode atualizar a UI com as presenças
+  });
+
+  // Função para adicionar presença
+  function adicionarPresenca(ra, codigo) {
+    const novaPresenca = { ra, codigo };
+    presencasRef.push(novaPresenca);
+  }
+//end mofigication
 
 function updateDateTime() {
     const now = new Date();
